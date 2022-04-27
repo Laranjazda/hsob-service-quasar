@@ -32,6 +32,7 @@
     <q-page-container>
       <!-- <router-view /> -->
       <FormUser />
+      <FormAddress />
     </q-page-container>
   </q-layout>
 </template>
@@ -40,6 +41,7 @@
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 import FormUser from "./FormUser.vue";
+import FormAddress from "./FormAddress.vue";
 
 const linksList = [
   {
@@ -92,7 +94,8 @@ export default defineComponent({
   components: {
     EssentialLink,
     FormUser,
-    FormUser,
+    FormAddress,
+    FormAddress,
   },
 
   setup() {
