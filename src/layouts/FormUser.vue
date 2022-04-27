@@ -56,7 +56,7 @@
         v-model="form.telefone"
         label="Telefone"
         outlined
-        class="col-md-8 col-sm-8 col-xs-8"
+        class="col-md-5 col-sm-5 col-xs-5"
         mask="(##) #####-####"
         unmasked-value
         :rules="[
@@ -64,6 +64,34 @@
           (val) => val.length === 11 || 'Coloque um telefone real',
         ]"
       />
+
+      <q-input
+        filled
+        v-model="form.birthday"
+        label="aaaa/mm/dd"
+        mask="date"
+        class="col-md-3 col-sm-3 col-xs-3"
+        :rules="[
+          (val) => (val && val.length > 0) || 'Data de nascimento obrigatória',
+        ]"
+      >
+        <template v-slot:append>
+          <q-icon name="event" class="cursor-pointer">
+            <q-popup-proxy
+              ref="qDateProxy"
+              cover
+              transition-show="scale"
+              transition-hide="scale"
+            >
+              <q-date v-model="form.birthday">
+                <div class="row items-center justify-end">
+                  <q-btn v-close-popup label="Close" flat />
+                </div>
+              </q-date>
+            </q-popup-proxy>
+          </q-icon>
+        </template>
+      </q-input>
 
       <q-select
         outlined
@@ -94,6 +122,7 @@
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
   name: "PageIndex",
   data() {
@@ -106,6 +135,7 @@ export default {
         email: "",
         phone: "",
         genderIdentity: "",
+        birthday: "",
       },
       optionsGenderIdentity: [
         { label: "Masculino", value: "Masculino" },
