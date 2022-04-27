@@ -11,10 +11,19 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <q-toolbar-title> H.S.O.B. App Services </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>H.S.O.B. v{{ $q.version }}</div>
       </q-toolbar>
+      <q-bar>
+        <ButtonDefault
+          type="button"
+          label="REMOVER"
+          @buttonActivated="remove(foto)"
+          :confirmation="false"
+          style="default"
+        />
+      </q-bar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
@@ -30,9 +39,9 @@
     </q-drawer>
 
     <q-page-container>
-      <!-- <router-view /> -->
-      <FormUser />
-      <FormAddress />
+      <router-view />
+      <!-- <FormUser />
+      <FormAddress /> -->
     </q-page-container>
   </q-layout>
 </template>
@@ -40,8 +49,9 @@
 <script>
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
-import FormUser from "./FormUser.vue";
-import FormAddress from "./FormAddress.vue";
+import FormUser from "../components/FormUser.vue";
+import FormAddress from "../components/FormAddress.vue";
+import ButtonDefault from "src/components/ButtonDefault.vue";
 
 const linksList = [
   {
@@ -93,9 +103,7 @@ export default defineComponent({
 
   components: {
     EssentialLink,
-    FormUser,
-    FormAddress,
-    FormAddress,
+    ButtonDefault,
   },
 
   setup() {
@@ -108,6 +116,12 @@ export default defineComponent({
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
     };
+  },
+
+  methods: {
+    remove() {
+      alert("Cadastrar novo usuário");
+    },
   },
 });
 </script>

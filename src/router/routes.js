@@ -6,7 +6,12 @@ const routes = [
   },
   {
     path: "/user",
-    component: () => import("layouts/FormUser.vue"),
+    component: () => import("src/components/FormUser.vue"),
+    children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
+  },
+  {
+    path: "/user-address",
+    component: () => import("src/components/FormAddress.vue"),
     children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
   },
 
